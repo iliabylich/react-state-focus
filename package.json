@@ -1,11 +1,11 @@
 {
   "name": "react-state-focus",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Package for React for passing lenses bound to the component's state to its subcomponents.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel index.js --out-dir dist",
-    "test": "mocha --compilers js:babel-register test.js",
+    "build": "babel src --out-dir dist",
+    "test": "jest",
     "prepublishOnly": "npm run build && npm run test"
   },
   "repository": {
@@ -26,11 +26,16 @@
   "homepage": "https://github.com/iliabylich/react-state-focus#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.16.0",
+    "babel-preset-react": "^6.24.1",
     "immutable": "^3.8.2",
+    "jest": "^22.4.3",
     "mocha": "^5.0.0",
-    "react": "^16.3.0"
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-test-renderer": "^16.3.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"
