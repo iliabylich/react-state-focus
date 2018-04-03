@@ -1,6 +1,6 @@
 {
   "name": "react-state-focus",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Package for React for passing lenses bound to the component's state to its subcomponents.",
   "main": "dist/index.js",
   "scripts": {
