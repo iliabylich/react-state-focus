@@ -1,3 +1,29 @@
+import React from 'react'
+
+const LensBoundComponent = (WrappedComponent) => {
+  const Wrapper = class extends React.Component {
+    shouldComponentUpdate(nextProps, nextState) {
+      const current = this.lensResolvesTo
+      const next = nextProps.lens.view()
+      const shouldUpdate = current !== next
+
+      if (shouldUpdate) {
+        this.lensResolvesTo = next
+      }
+      return shouldUpdate
+    }
+
+    render() {
+      this.lensResolvesTo = this.props.lens.view()
+      return <WrappedComponent {...this.props} />
+    }
+  }
+  Wrapper.propTypes = WrappedComponent.propTypes
+  Wrapper.displayName = `LensBoundComponent(${WrappedComponent.name})`
+
+  return Wrapper
+}
+
 class Lens {
   constructor() {
     this.view = this.view.bind(this)
@@ -92,6 +118,18 @@ class LensChain extends Lens {
   chain(...lenses) {
     return new LensChain(...this.lenses, ...lenses)
   }
+
+  chainProperty(prop) {
+    const lens = new PropertyLens(prop)
+    return this.chain(lens)
+  }
 }
 
-export { Lens, BoundLens, StateBoundLens, PropertyLens, LensChain }
+export {
+  Lens,
+  BoundLens,
+  StateBoundLens,
+  PropertyLens,
+  LensChain,
+  LensBoundComponent
+}
