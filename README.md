@@ -99,5 +99,29 @@ class YourForm extends React.Component {
   <input type="text" value={props.lens.view()} onChange={(e) => props.lens.set(e.target.value)}
 ```
 
-See `test.js` for more specific details.
+5. StateBoundLens
+
+`StateBoundLens` is a Higher-order component that prevents redundant updates
+when lens returns the same value. It does a `===` comparison between previous and current values.
+
+``` jsx
+import { Lens, LensBoundComponent } from 'react-state-focus';
+
+const Checkbox = ({ lens }) => (
+  <input
+    type="checkbox"
+    checked={lens.view()}
+    onChange={e => lens.set(e.target.checked)}
+  />
+)
+
+Checkbox.propTypes = {
+  lens: PropTypes.instanceOf(Lens)
+}
+
+export default LensBoundComponent(Checkbox);
+```
+
+
+See `tests/` directory for more specific details.
 Also a [demo repo](https://github.com/iliabylich/react-lens-forms/) is available.

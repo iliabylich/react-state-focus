@@ -18,6 +18,10 @@
     "state",
     "form"
   ],
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "Ilya Bylich",
   "license": "MIT",
   "bugs": {
