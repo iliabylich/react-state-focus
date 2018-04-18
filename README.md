@@ -99,9 +99,11 @@ class YourForm extends React.Component {
   <input type="text" value={props.lens.view()} onChange={(e) => props.lens.set(e.target.value)}
 ```
 
-5. StateBoundLens
+This class also has a shortcut `.chain(new PropertyLens(attribute))` -> `.chainProperty(attribute)`.
 
-`StateBoundLens` is a Higher-order component that prevents redundant updates
+5. LensBoundComponent
+
+`LensBoundComponent` is a Higher-order component that prevents redundant updates
 when lens returns the same value. It does a `===` comparison between previous and current values.
 
 ``` jsx
