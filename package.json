@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "jest",
-    "prepublishOnly": "npm run build && npm run test"
+    "prepublishOnly": "yarn run build && yarn run test"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,9 @@
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
     "immutable": "^3.8.2",
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
