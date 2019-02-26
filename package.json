@@ -4,9 +4,10 @@
   "description": "Package for React for passing lenses bound to the component's state to its subcomponents.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "yarn run clean && babel src/index.ts --out-dir dist --extensions '.ts,.tsx'",
     "test": "jest",
-    "prepublishOnly": "yarn run build && yarn run test"
+    "clean": "rm -rf dist/*",
+    "prepublishOnly": "yarn run test && yarn run build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,25 @@
     "dist",
     "src"
   ],
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "babel-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.test.ts?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx",
+      "node"
+    ]
+  },
   "author": "Ilya Bylich",
   "license": "MIT",
   "bugs": {
@@ -31,16 +51,20 @@
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/jest": "^24.0.9",
+    "@types/react": "^16.8.5",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.6.0",
-    "immutable": "^3.8.2",
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-test-renderer": "^16.5.2"
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.1.2"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"

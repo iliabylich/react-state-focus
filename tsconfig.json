@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noErrorTruncation": true,
+    "strict": true
+  },
+  "include": [
+    "src/**/*.ts"
+    "src/**/*.tsx"
+  ]
+}
